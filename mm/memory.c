@@ -5364,8 +5364,8 @@ static vm_fault_t do_numa_page(struct vm_fault *vmf)
 	colloid
 	Move pages away from local NUMA is congested
 	*/
-	if(page_nid == numa_node_id() && target_nid == NUMA_NO_NODE) {
-		target_nid = numa_migrate_memory_away_target(page, page_nid);
+	if(nid == numa_node_id() && target_nid == NUMA_NO_NODE) {
+		target_nid = numa_migrate_memory_away_target(folio, nid);
 	}
 	if (target_nid == NUMA_NO_NODE)
 		goto out_map;
