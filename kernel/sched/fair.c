@@ -1979,8 +1979,8 @@ int numa_migrate_memory_away_target(struct folio *folio, int src_nid) {
 	if(sysctl_numa_balancing_mode & NUMA_BALANCING_NORMAL) {
 		// No timestamp, use active/inactive list to determine hotness
 		// Do not move pages that are not in the active list
-		if(!PageActive(folio->page)) {
-			mark_page_accessed(folio->page);
+		if(!PageActive(&(folio)->page)) {
+			mark_page_accessed(&(folio)->page);
 			return NUMA_NO_NODE;
 		}
 	} else {
